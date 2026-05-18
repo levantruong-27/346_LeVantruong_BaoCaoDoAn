@@ -1,0 +1,824 @@
+$primary: #c0392b;
+$primary-dark: #a93226;
+$text-dark: #1f2937;
+$text-medium: #4b5563;
+$text-light: #9ca3af;
+$border: #f0f0f5;
+$red: #ef4444;
+$green: #10b981;
+$blue: #3b82f6;
+$yellow: #f59e0b;
+
+.card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid $border;
+  overflow: hidden;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid $border;
+  border-radius: 8px;
+  padding: 9px 14px;
+  flex: 1;
+  min-width: 200px;
+  max-width: 260px;
+  transition: border-color 0.15s;
+
+  &:focus-within { border-color: $primary; }
+
+  input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    outline: none;
+  }
+}
+
+.select, .dateInput {
+  padding: 9px 12px;
+  border: 1px solid $border;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+
+  &:focus { border-color: $primary; }
+}
+
+.tableWrap { overflow-x: auto; }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead th {
+    text-align: left;
+    padding: 11px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: $text-light;
+    background: #fbfbfd;
+    border-bottom: 1px solid $border;
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 12px 14px;
+    font-size: 13px;
+    color: $text-dark;
+    border-bottom: 1px solid $border;
+    vertical-align: middle;
+  }
+
+  tbody tr:hover { background: #fbfbfd; }
+  tbody tr:last-child td { border-bottom: none; }
+}
+
+.customerCell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: flex-start;
+}
+
+.vipBadge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: rgba($yellow, 0.15);
+  color: darken($yellow, 10%);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  border-radius: 10px;
+  cursor: help;
+}
+
+.noteText {
+  font-size: 11px;
+  color: $text-light;
+  margin-top: 2px;
+  font-style: italic;
+}
+
+.muted { color: $text-light; font-size: 12px; }
+
+.empty {
+  text-align: center !important;
+  padding: 40px 20px !important;
+  color: $text-light;
+}
+
+// ===== Badges =====
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.badgePending { background: rgba($yellow, 0.15); color: darken($yellow, 10%); }
+.badgeConfirmed { background: rgba($blue, 0.12); color: $blue; }
+.badgeCancelled { background: rgba($red, 0.12); color: $red; }
+.badgeCompleted { background: rgba($green, 0.12); color: $green; }
+
+// ===== Actions =====
+.actions {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.confirmBtn, .completeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 30px;
+  padding: 0 12px;
+  background: $green;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  svg { flex-shrink: 0; }
+
+  &:hover:not(:disabled) { background: darken($green, 6%); }
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+.cancelBtn {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 12px;
+  background: #fff;
+  color: $red;
+  border: 1px solid rgba($red, 0.35);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+
+  &:hover:not(:disabled) {
+    background: rgba($red, 0.06);
+    border-color: $red;
+  }
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+.iconBtn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid $border;
+  background: #fff;
+  color: $text-medium;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+
+  &:hover {
+    background: #fbfbfd;
+    color: $primary;
+    border-color: rgba($primary, 0.3);
+  }
+}
+
+// ===== Pagination =====
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-top: 1px solid $border;
+  font-size: 13px;
+  color: $text-light;
+}
+
+.pageBtns {
+  display: flex;
+  gap: 8px;
+
+  button {
+    padding: 7px 14px;
+    border: 1px solid $border;
+    background: #fff;
+    border-radius: 6px;
+    font-size: 13px;
+    color: $text-medium;
+    cursor: pointer;
+
+    &:hover:not(:disabled) { background: #f5f5f5; }
+    &:disabled { opacity: 0.4; cursor: not-allowed; }
+  }
+}
+
+// ===== Form =====
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    font-size: 13px;
+    font-weight: 600;
+    color: $text-dark;
+  }
+
+  input, select, textarea {
+    padding: 9px 12px;
+    border: 1px solid $border;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    font-family: inherit;
+
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba($primary, 0.1);
+    }
+
+    &:disabled {
+      background: #f5f5f5;
+      color: $text-medium;
+      cursor: not-allowed;
+    }
+  }
+
+  textarea { resize: vertical; }
+}
+
+.required { color: $red; }
+
+.errMsg { font-size: 12px; color: $red; }
+
+.hint {
+  font-size: 11px;
+  color: $green;
+  font-weight: 500;
+}
+
+// ===== Customer picker button =====
+.pickCustomerBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 16px;
+  background: #fafafa;
+  border: 2px dashed $border;
+  border-radius: 10px;
+  color: $text-medium;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  width: 100%;
+
+  &:hover {
+    border-color: $primary;
+    background: rgba($primary, 0.03);
+    color: $primary;
+  }
+}
+
+.customerSelected {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba($green, 0.04);
+  border: 1px solid rgba($green, 0.25);
+  border-radius: 10px;
+}
+
+.customerSelectedIcon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.customerSelectedInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  strong {
+    font-size: 14px;
+    color: $text-dark;
+  }
+}
+
+.customerStats {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+  font-size: 12px;
+  color: $text-medium;
+}
+
+.newTag {
+  font-size: 11px;
+  color: $blue;
+  margin-top: 2px;
+  font-style: italic;
+}
+
+// ===== Customer picker modal =====
+.pickerTabs {
+  display: flex;
+  gap: 2px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 3px;
+  margin-bottom: 16px;
+}
+
+.pickerTab {
+  flex: 1;
+  padding: 9px 14px;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: $text-medium;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+
+  &:hover { color: $text-dark; }
+}
+
+.pickerTabActive {
+  background: #fff;
+  color: $primary;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.pickerExisting {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pickerSearch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  background: #f5f5f5;
+  border-radius: 8px;
+
+  input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    outline: none;
+
+    &::placeholder { color: #aaa; }
+  }
+}
+
+.pickerList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.pickerEmpty {
+  text-align: center;
+  padding: 40px 20px;
+  color: $text-light;
+  font-size: 13px;
+}
+
+.pickerItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #fff;
+  border: 1px solid $border;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s;
+
+  &:hover {
+    border-color: $primary;
+    background: rgba($primary, 0.03);
+  }
+}
+
+.pickerItemMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+
+  strong {
+    font-size: 13px;
+    color: $text-dark;
+  }
+
+  .muted {
+    font-size: 11px;
+    color: $text-light;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.pickerItemStats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  font-size: 11px;
+  color: $text-medium;
+  flex-shrink: 0;
+
+  .spent {
+    color: $primary;
+    font-weight: 600;
+  }
+}
+
+.pickerNew {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pickerUseNewBtn {
+  padding: 11px 16px;
+  background: $primary;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+
+  &:hover { background: $primary-dark; }
+}
+
+.pickerHint {
+  margin: 4px 0 0 0;
+  padding: 10px 12px;
+  background: rgba($blue, 0.06);
+  border-radius: 6px;
+  font-size: 11px;
+  color: $blue;
+}
+
+// ===== Customer lookup (legacy) =====
+.lookupLoading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  font-size: 12px;
+  color: $text-light;
+  margin-top: 6px;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #ddd;
+  border-top-color: $primary;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.customerFound {
+  margin-top: 8px;
+  padding: 12px 14px;
+  background: rgba($green, 0.04);
+  border: 1px solid rgba($green, 0.3);
+  border-radius: 8px;
+}
+
+.customerHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.customerIcon {
+  font-size: 22px;
+}
+
+.customerInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  strong {
+    font-size: 14px;
+    color: $text-dark;
+  }
+
+  .muted {
+    font-size: 12px;
+    color: $text-light;
+  }
+}
+
+.clearBtn {
+  padding: 4px 10px;
+  border: none;
+  background: transparent;
+  color: $primary;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+
+  &:hover { background: rgba($primary, 0.08); }
+}
+
+.customerStats {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba($green, 0.25);
+  font-size: 12px;
+  color: $text-medium;
+}
+
+.vipTag {
+  margin-left: auto;
+  padding: 2px 8px;
+  background: rgba($yellow, 0.15);
+  color: darken($yellow, 10%);
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+.customerNew {
+  margin-top: 6px;
+  padding: 8px 12px;
+  background: rgba($blue, 0.08);
+  border: 1px solid rgba($blue, 0.25);
+  border-radius: 8px;
+  font-size: 12px;
+  color: $blue;
+  font-weight: 500;
+}
+
+// ===== Buttons =====
+.btnPrimary {
+  padding: 9px 18px;
+  background: $primary;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover:not(:disabled) { background: $primary-dark; }
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+}
+
+.btnSecondary {
+  padding: 9px 18px;
+  background: #fff;
+  color: $text-medium;
+  border: 1px solid $border;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover:not(:disabled) { background: #f5f5f5; }
+}
+
+.btnDanger {
+  padding: 9px 18px;
+  background: $red;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover:not(:disabled) { background: darken($red, 8%); }
+  &:disabled { opacity: 0.6; }
+}
+
+@media (max-width: 768px) {
+  .formRow { grid-template-columns: 1fr; }
+  .searchBox { max-width: none; min-width: 0; width: 100%; }
+
+  // Filters: search + status full-width, 2 date chia đôi hàng dưới
+  .filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .filters > .searchBox,
+  .filters > .select {
+    grid-column: 1 / -1;
+    padding: 9px 12px;
+  }
+  .filters > .searchBox input { font-size: 13px; }
+  .select, .dateInput {
+    width: 100%;
+    padding: 9px 10px;
+    font-size: 13px;
+    min-width: 0;
+  }
+
+  .card { padding: 0; border: none; background: transparent; overflow: visible; }
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid $border;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    gap: 6px;
+  }
+  .toolbar .btnPrimary { width: 100%; padding: 10px; font-size: 13px; }
+
+  .pagination {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 14px;
+    align-items: stretch;
+    text-align: center;
+    background: #fff;
+    border: 1px solid $border;
+    border-radius: 12px;
+    margin-top: 10px;
+  }
+  .pageBtns { justify-content: center; }
+  .pageBtns button { flex: 1; padding: 10px; }
+
+  // List table → stacked cards
+  .tableWrap { overflow: visible; }
+  .table, .table tbody, .table tr, .table td { display: block; width: 100%; }
+  .table thead { display: none; }
+  .table tr {
+    background: #fff;
+    border: 1px solid $border;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    padding: 12px 14px;
+    transition: border-color 0.15s;
+  }
+  .table tr:hover { background: #fff; border-color: rgba($primary, 0.25); }
+
+  .table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 5px 0 !important;
+    border: none !important;
+    text-align: left !important;
+    font-size: 13px;
+    min-height: 22px;
+
+    &::before {
+      content: attr(data-label);
+      font-size: 10px;
+      font-weight: 600;
+      color: $text-light;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      flex-shrink: 0;
+    }
+  }
+
+  // Khách: card header nổi bật
+  .table td[data-label="Khách"] {
+    padding-bottom: 8px !important;
+    margin-bottom: 4px;
+    border-bottom: 1px dashed $border !important;
+    align-items: flex-start;
+
+    &::before { display: none; }
+  }
+  .customerCell { flex: 1; align-items: flex-start; }
+  .customerCell strong { font-size: 15px; }
+
+  // Ngày + giờ + số khách hiển thị compact
+  .table td[data-label="Ngày"],
+  .table td[data-label="Giờ"],
+  .table td[data-label="Số khách"] {
+    display: inline-flex;
+    width: 33.33%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    border-right: 1px solid $border !important;
+
+    &::before {
+      font-size: 9px;
+      margin-bottom: 2px;
+    }
+  }
+  .table td[data-label="Số khách"] {
+    border-right: none !important;
+    text-align: left !important;
+  }
+
+  // Trạng thái: đưa lên ngay sau Khách
+  .table td[data-label="Trạng thái"] {
+    padding-top: 6px !important;
+  }
+
+  // Actions: full-width cuối card
+  .table td[data-label="Thao tác"] {
+    padding-top: 8px !important;
+    margin-top: 4px;
+    border-top: 1px dashed $border !important;
+
+    &::before { display: none; }
+  }
+  .actions {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    gap: 6px;
+  }
+  .actions > button:not(.iconBtn):not(.confirmBtn):not(.completeBtn):not(.cancelBtn) {
+    height: 36px;
+    min-width: 36px;
+  }
+  .confirmBtn, .completeBtn, .cancelBtn { flex: 1; min-width: 0; justify-content: center; }
+  .iconBtn { width: 36px; height: 36px; }
+
+  .table td.empty { text-align: center !important; display: block !important; padding: 20px !important; }
+  .table td.empty::before { display: none; }
+}

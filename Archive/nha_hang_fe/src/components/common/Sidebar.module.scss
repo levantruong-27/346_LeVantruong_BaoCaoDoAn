@@ -1,0 +1,148 @@
+$primary: #c0392b;
+$primary-dark: #a93226;
+$sidebar-bg: #ffffff;
+$text-dark: #1a1a1a;
+$text-medium: #555;
+$text-light: #999;
+
+.sidebar {
+  width: 248px;
+  background: $sidebar-bg;
+  border-right: 1px solid #f0f0f5;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 50;
+  transition: transform 0.25s ease;
+}
+
+.backdrop {
+  display: none;
+}
+
+.brand {
+  padding: 28px 24px 24px;
+}
+
+.brandName {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 700;
+  color: $primary;
+  margin: 0 0 2px 0;
+  line-height: 1.2;
+}
+
+.brandSub {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: $text-light;
+}
+
+.nav {
+  flex: 1;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: $text-medium;
+  text-decoration: none;
+  transition: all 0.15s;
+
+  &:hover {
+    background: #f8f8fb;
+    color: $text-dark;
+  }
+}
+
+.navActive {
+  background: rgba($primary, 0.08);
+  color: $primary;
+
+  .navIcon svg {
+    stroke: $primary;
+  }
+
+  &:hover {
+    background: rgba($primary, 0.12);
+    color: $primary;
+  }
+}
+
+.navIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  flex-shrink: 0;
+
+  svg {
+    stroke: $text-medium;
+  }
+}
+
+.navActive .navIcon svg {
+  stroke: $primary;
+}
+
+.footer {
+  padding: 16px 12px 24px;
+}
+
+.reservationBtn {
+  width: 100%;
+  padding: 12px;
+  background: $primary;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: $primary-dark;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(31, 41, 55, 0.4);
+    z-index: 49;
+    animation: fadeIn 0.2s ease;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

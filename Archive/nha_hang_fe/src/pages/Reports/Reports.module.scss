@@ -1,0 +1,384 @@
+$primary: #c0392b;
+$primary-dark: #a93226;
+$text-dark: #1f2937;
+$text-medium: #4b5563;
+$text-light: #9ca3af;
+$border: #f0f0f5;
+$green: #10b981;
+$red: #ef4444;
+
+// ===== Tabs =====
+.tabs {
+  display: flex;
+  gap: 2px;
+  background: #f5f5f8;
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.tab {
+  flex: 1;
+  min-width: 140px;
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: $text-medium;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.15s;
+  white-space: nowrap;
+
+  &:hover { color: $text-dark; }
+
+  &.active {
+    background: #fff;
+    color: $primary;
+  }
+}
+
+.tabIcon { font-size: 15px; }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+// ===== Toolbar =====
+.toolbar {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 18px;
+  border: 1px solid $border;
+}
+
+// ===== Summary cards =====
+.summaryRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.summaryCard {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  border: 1px solid $border;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color 0.15s;
+
+  &:hover { border-color: #e5e7eb; }
+}
+
+.summaryLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  color: $text-light;
+}
+
+.summaryValue {
+  font-size: 22px;
+  font-weight: 700;
+  color: $text-dark;
+  margin-top: 4px;
+}
+
+.summarySub {
+  font-size: 12px;
+  color: $text-light;
+  margin-top: 2px;
+}
+
+// ===== Card =====
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px 24px;
+  border: 1px solid $border;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: $text-dark;
+}
+
+.cardDesc {
+  margin: 4px 0 0 0;
+  font-size: 12px;
+  color: $text-light;
+}
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: $text-light;
+  font-size: 13px;
+}
+
+// ===== Date picker =====
+.datePicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  > span {
+    font-size: 12px;
+    font-weight: 600;
+    color: $text-medium;
+  }
+
+  input {
+    padding: 7px 10px;
+    border: 1px solid $border;
+    border-radius: 8px;
+    font-size: 12px;
+    outline: none;
+
+    &:focus { border-color: $primary; }
+  }
+}
+
+// ===== Table =====
+.tableWrap { overflow-x: auto; }
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead th {
+    text-align: left;
+    padding: 11px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: $text-light;
+    background: #fbfbfd;
+    border-bottom: 1px solid $border;
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 12px 14px;
+    font-size: 13px;
+    color: $text-dark;
+    border-bottom: 1px solid $border;
+    vertical-align: middle;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: #fbfbfd; }
+}
+
+.emptyCell {
+  text-align: center !important;
+  padding: 40px 20px !important;
+  color: $text-light;
+}
+
+.muted { color: $text-light; font-size: 12px; }
+.orderCode { font-family: 'Menlo', monospace; font-weight: 600; color: $primary; }
+
+// ===== Item cell =====
+.itemCell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.itemImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.itemImgPlaceholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+// ===== Never sold =====
+.neverSoldList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.neverSoldItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: #fbfbfd;
+  border: 1px solid $border;
+  border-radius: 8px;
+
+  img {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  > div {
+    min-width: 0;
+    flex: 1;
+
+    strong {
+      display: block;
+      font-size: 13px;
+      color: $text-dark;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+// ===== Export button =====
+.exportBtn {
+  padding: 8px 16px;
+  background: #fff;
+  border: 1px solid $border;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $text-medium;
+  cursor: pointer;
+  transition: all 0.15s;
+
+  &:hover:not(:disabled) {
+    background: $primary;
+    color: #fff;
+    border-color: $primary;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// ===== Responsive =====
+@media (max-width: 1000px) {
+  .summaryRow { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .tabs {
+    margin-bottom: 14px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar { display: none; }
+  }
+  .tab { min-width: auto; flex: 0 0 auto; padding: 10px 14px; font-size: 12px; }
+
+  .toolbar { padding: 12px; border-radius: 12px; }
+
+  .card { padding: 16px; border-radius: 12px; }
+  .cardHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .cardTitle { font-size: 15px; }
+  .cardDesc { font-size: 11px; }
+
+  .datePicker {
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+
+    input { flex: 1; min-width: 0; }
+  }
+
+  .exportBtn { width: 100%; padding: 10px; }
+
+  .summaryCard { padding: 14px 16px; }
+  .summaryValue { font-size: 18px; }
+
+  // Tables → card-stack mỗi hàng (không scroll ngang)
+  .tableWrap { overflow: visible; }
+  .dataTable, .dataTable tbody, .dataTable tr, .dataTable td {
+    display: block;
+    width: 100%;
+  }
+  .dataTable thead { display: none; }
+  .dataTable tr {
+    background: #fbfbfd;
+    border: 1px solid $border;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    padding: 10px 12px;
+  }
+  .dataTable tr:hover td { background: transparent; }
+  .dataTable td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0 !important;
+    border: none !important;
+    text-align: left !important;
+    font-size: 12px;
+
+    &::before {
+      content: attr(data-label);
+      font-size: 10px;
+      font-weight: 600;
+      color: $text-light;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      flex-shrink: 0;
+    }
+  }
+  .dataTable td.emptyCell {
+    text-align: center !important;
+    display: block !important;
+  }
+  .dataTable td.emptyCell::before { display: none; }
+  .itemCell { justify-content: flex-end; }
+
+  .neverSoldList { grid-template-columns: 1fr; gap: 8px; }
+
+  .empty { padding: 40px 16px; }
+}
+
+@media (max-width: 600px) {
+  .summaryRow { grid-template-columns: 1fr; gap: 10px; }
+  .summaryCard { padding: 12px 14px; }
+  .summaryValue { font-size: 16px; }
+}
